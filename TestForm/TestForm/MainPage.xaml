@@ -2,13 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TestForm"
+             xmlns:cc="clr-namespace:CCPack;assembly=CCPack"
+             x:Name="contentPage"
              x:Class="TestForm.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <Grid BindingContext="{x:Reference contentPage}">
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <cc:CCEntry Text="{Binding Text, Mode=TwoWay}" ErrorMessage="{Binding ErrorMessage}" Title="{Binding EntryTitle}" Placeholder="{Binding EntryPlaceholder}"/>
+            <cc:CCButton Text="pushをpush"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <cc:CCButtonPositive Grid.Column="0" Text="Positive" Clicked="CCButtonPositive_Clicked"/>
+                <cc:CCButtonNegative Grid.Column="1" Text="Negative" Clicked="CCButtonNegative_Clicked"/>
+                <cc:CCButtonPositive Grid.Column="0" Grid.Row="1" IsEnabled="False" Text="Positive disable"/>
+                <cc:CCButtonNegative Grid.Column="1" Grid.Row="1" IsEnabled="False" Text="Negative disable"/>
+            </Grid>
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

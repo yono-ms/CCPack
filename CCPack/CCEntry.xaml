@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CCPack"
+             x:Name="contentView"
+             x:Class="CCPack.CCEntry">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:StringEnableConverter x:Key="cvEnable"/>
+            <local:StringColorConverter x:Key="cvColor"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BindingContext="{x:Reference contentView}">
+            <Frame HasShadow="True" Margin="4" Padding="4">
+                <Frame.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="{Binding ErrorMessage, Converter={StaticResource cvColor}}" WidthRequest="10" HeightRequest="10" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Margin="14,0,0,0" Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                        <Label Grid.Row="1" Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={StaticResource cvEnable}}"/>
+                        <Entry Grid.Row="2" Text="{Binding Text}" Placeholder="{Binding Placeholder}" VerticalOptions="Center"/>
+
+                    </Grid>
+                </Frame.Content>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
