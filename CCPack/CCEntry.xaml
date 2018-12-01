@@ -14,18 +14,14 @@
         <Grid BindingContext="{x:Reference contentView}">
             <Frame HasShadow="True" Margin="4" Padding="4">
                 <Frame.Content>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="{Binding ErrorMessage, Converter={StaticResource cvColor}}" WidthRequest="10" HeightRequest="10" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Margin="14,0,0,0" Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" VerticalTextAlignment="Center"/>
-                        <Label Grid.Row="1" Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={StaticResource cvEnable}}"/>
-                        <Entry Grid.Row="2" Text="{Binding Text}" Placeholder="{Binding Placeholder}" VerticalOptions="Center"/>
-
-                    </Grid>
+                    <StackLayout Spacing="0">
+                        <Grid>
+                            <BoxView BackgroundColor="{Binding ErrorMessage, Converter={StaticResource cvColor}}" WidthRequest="10" HeightRequest="10" HorizontalOptions="Start" VerticalOptions="Center"/>
+                            <Label Margin="14,0,0,0" Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                        </Grid>
+                        <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={StaticResource cvEnable}}"/>
+                        <Entry Text="{Binding Text}" Placeholder="{Binding Placeholder}" VerticalOptions="Center"/>
+                    </StackLayout>
                 </Frame.Content>
             </Frame>
         </Grid>
