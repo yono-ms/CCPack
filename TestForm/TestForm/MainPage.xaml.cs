@@ -29,7 +29,15 @@ namespace TestForm
         public string ErrorMessage
         {
             get { return _ErrorMessage; }
-            set { _ErrorMessage = value; OnPropertyChanged(); }
+            set { _ErrorMessage = value; OnPropertyChanged(); CanCommit = string.IsNullOrEmpty(ErrorMessage); }
+        }
+
+        private bool _CanCommit;
+
+        public bool CanCommit
+        {
+            get { return _CanCommit; }
+            set { _CanCommit = value; OnPropertyChanged(); }
         }
 
         public MainPage()

@@ -10,7 +10,7 @@
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
             <cc:CCEntry Text="{Binding Text, Mode=TwoWay}" ErrorMessage="{Binding ErrorMessage}" Title="{Binding EntryTitle}" Placeholder="{Binding EntryPlaceholder}"/>
-            <cc:CCButton Text="pushをpush"/>
+            <cc:CCButton Text="COMMIT" IsEnabled="{Binding CanCommit}" DarkColor="DarkGreen" LightColor="LightGreen"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -20,10 +20,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <cc:CCButtonPositive Grid.Column="0" Text="Positive" Clicked="CCButtonPositive_Clicked"/>
-                <cc:CCButtonNegative Grid.Column="1" Text="Negative" Clicked="CCButtonNegative_Clicked"/>
-                <cc:CCButtonPositive Grid.Column="0" Grid.Row="1" IsEnabled="False" Text="Positive disable"/>
-                <cc:CCButtonNegative Grid.Column="1" Grid.Row="1" IsEnabled="False" Text="Negative disable"/>
+                <cc:CCButtonPositive Grid.Column="0" Text="POSITIVE" Clicked="CCButtonPositive_Clicked"/>
+                <cc:CCButtonNegative Grid.Column="1" Text="NEGATIVE" Clicked="CCButtonNegative_Clicked"/>
+                <cc:CCButtonPositive Grid.Column="0" Grid.Row="1" IsEnabled="False" Text="POSITIVE DISABLE"/>
+                <cc:CCButtonNegative Grid.Column="1" Grid.Row="1" IsEnabled="False" Text="NEGATIVE DISABLE"/>
             </Grid>
             <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
         </StackLayout>
