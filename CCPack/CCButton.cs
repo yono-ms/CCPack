@@ -172,7 +172,8 @@ namespace CCPack
                         SKDropShadowImageFilterShadowMode.DrawShadowAndForeground);
                 }
 
-                canvas.DrawRect(bodyRect, paint);
+                var radius = 4f;
+                canvas.DrawRoundRect(bodyRect, radius, radius, paint);
             }
 
             // 文字
