@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/yono-ms/CCPack</PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <Description>CustomControlPack for Xamarin Forms.</Description>
+    <Copyright>yono-ms</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
