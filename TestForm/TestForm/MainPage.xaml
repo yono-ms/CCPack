@@ -11,6 +11,7 @@
             <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
             <cc:CCEntry Text="{Binding Text, Mode=TwoWay}" ErrorMessage="{Binding ErrorMessage}" Title="{Binding EntryTitle}" Placeholder="{Binding EntryPlaceholder}"/>
             <cc:CCButton Text="COMMIT" IsEnabled="{Binding CanCommit}" DarkColor="DarkGreen" LightColor="LightGreen"/>
+            <cc:CCMButton Text="日本語でコミット"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace CCPack
 {
-    public class CCButtonNegative : CCButton
+    public class CCButtonNegative : CCMButton
     {
         public CCButtonNegative()
         {
