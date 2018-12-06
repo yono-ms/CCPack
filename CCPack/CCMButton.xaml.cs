@@ -38,7 +38,6 @@ namespace CCPack
                         IsPressed = false;
                         view.InvalidateSurface();
                         StartAnimationAsync(view);
-                        Clicked?.Invoke(this, new EventArgs());
                     }
                     break;
 

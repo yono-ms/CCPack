@@ -7,8 +7,8 @@
     <Description>CustomControlPack for Xamarin Forms.</Description>
     <Copyright>yono-ms</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Multilingual Button</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>bug fix.</PackageReleaseNotes>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
