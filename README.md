@@ -3,5 +3,6 @@ CustomControlPack for Xamarin Forms.
 
 - CCEntry
 - CCButton
-- CCButtonPositive
-- CCButtonNegative
+- CCMButton (Multilingual)
+- CCButtonPositive (Multilingual)
+- CCButtonNegative (Multilingual)
