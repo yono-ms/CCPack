@@ -119,6 +119,7 @@ namespace CCPack
                 InvalidateSurface();
 
                 Clicked?.Invoke(this, new EventArgs());
+                Command?.Execute(CommandParameter);
             }
             catch (Exception ex)
             {
@@ -265,5 +266,37 @@ namespace CCPack
         /// </summary>
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(CCButton), Color.White);
 
+        /// <summary>
+        /// コマンド
+        /// </summary>
+        public Command Command
+        {
+            get { return (Command)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+        /// <summary>
+        /// コマンド
+        /// </summary>
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(Command), typeof(CCButton));
+
+        /// <summary>
+        /// コマンドパラメータ
+        /// </summary>
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+        /// <summary>
+        /// コマンドパラメータ
+        /// </summary>
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
+            "CommandParameter", typeof(object), typeof(CCButton), null, BindingMode.TwoWay, propertyChanged: (b, o, n) =>
+            {
+                //Debug.WriteLine($"CommandParameterProperty old={o} new={n}");
+                var button = b as CCButton;
+                button.IsEnabled = button.Command.CanExecute(n);
+                button.InvalidateSurface();
+            });
     }
 }

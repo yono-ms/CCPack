@@ -3,12 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/yono-ms/CCPack</PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/yono-ms/CCPack/blob/master/LICENSE</PackageLicenseUrl>
     <Description>CustomControlPack for Xamarin Forms.</Description>
     <Copyright>yono-ms</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>bug fix.</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>add property.
+Command
+CommandParameter</PackageReleaseNotes>
+    <Version>1.0.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

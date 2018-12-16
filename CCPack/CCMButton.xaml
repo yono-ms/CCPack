@@ -4,11 +4,11 @@
              xmlns:sk="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Name="contentView"
              x:Class="CCPack.CCMButton">
-  <ContentView.Content>
-      <Grid BindingContext="{x:Reference contentView}">
-            <sk:SKCanvasView EnableTouchEvents="True" Touch="SKCanvasView_Touch" PaintSurface="SKCanvasView_PaintSurface"/>
+    <ContentView.Content>
+        <Grid BindingContext="{x:Reference contentView}">
+            <sk:SKCanvasView IsEnabled="{Binding IsEnabled}" EnableTouchEvents="True" Touch="SKCanvasView_Touch" PaintSurface="SKCanvasView_PaintSurface"/>
             <Label Text="{Binding Text}" TextColor="Gray" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Center" TranslationX="1" TranslationY="1" IsVisible="{Binding IsPressed}" />
-            <Label Text="{Binding Text}" TextColor="{Binding TextColor}" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Center" />
-      </Grid>
-  </ContentView.Content>
+            <Label Text="{Binding Text}" TextColor="{Binding CurrentTextColor}" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </ContentView.Content>
 </ContentView>

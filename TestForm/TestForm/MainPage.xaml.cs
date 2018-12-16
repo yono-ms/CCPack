@@ -70,5 +70,14 @@ namespace TestForm
         {
             Trace.WriteLine($"CCButtonNegative_Clicked");
         }
+
+        public Command CommitCommand => new Command((arg) =>
+        {
+            Trace.WriteLine($"CommitCommand Execute");
+        }, (arg) =>
+        {
+            Trace.WriteLine($"CommitCommand CanExecute {arg}");
+            return string.IsNullOrEmpty(arg as string);
+        });
     }
 }

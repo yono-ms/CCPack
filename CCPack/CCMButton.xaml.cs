@@ -18,6 +18,8 @@ namespace CCPack
         public CCMButton()
         {
             InitializeComponent();
+
+            CurrentTextColor = IsEnabled ? TextColor : Color.Gray;
         }
 
         private void SKCanvasView_Touch(object sender, SKTouchEventArgs e)
@@ -86,6 +88,7 @@ namespace CCPack
                 view.InvalidateSurface();
 
                 Clicked?.Invoke(this, new EventArgs());
+                Command?.Execute(CommandParameter);
             }
             catch (Exception ex)
             {
@@ -194,7 +197,7 @@ namespace CCPack
         /// <summary>
         /// 明るい色
         /// </summary>
-        public static readonly BindableProperty LightColorProperty = BindableProperty.Create("LightColor", typeof(Color), typeof(CCButton), Color.White);
+        public static readonly BindableProperty LightColorProperty = BindableProperty.Create("LightColor", typeof(Color), typeof(CCMButton), Color.White);
         /// <summary>
         /// 暗い色
         /// </summary>
@@ -206,7 +209,7 @@ namespace CCPack
         /// <summary>
         /// 暗い色
         /// </summary>
-        public static readonly BindableProperty DarkColorProperty = BindableProperty.Create("DarkColor", typeof(Color), typeof(CCButton), Color.DarkGray);
+        public static readonly BindableProperty DarkColorProperty = BindableProperty.Create("DarkColor", typeof(Color), typeof(CCMButton), Color.DarkGray);
         /// <summary>
         /// ボタンテキスト
         /// </summary>
@@ -218,7 +221,7 @@ namespace CCPack
         /// <summary>
         /// ボタンテキスト
         /// </summary>
-        public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(CCButton), null);
+        public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(CCMButton), null);
         /// <summary>
         /// ボタンテキストの色
         /// </summary>
@@ -230,6 +233,51 @@ namespace CCPack
         /// <summary>
         /// ボタンテキストの色
         /// </summary>
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(CCButton), Color.White);
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(CCMButton), Color.White);
+
+        /// <summary>
+        /// ボタンテキストの色（活性条件により変動）
+        /// </summary>
+        private Color _CurrentTextColor;
+        /// <summary>
+        /// ボタンテキストの色（活性条件により変動）
+        /// </summary>
+        public Color CurrentTextColor
+        {
+            get { return _CurrentTextColor; }
+            set { _CurrentTextColor = value; OnPropertyChanged(); }
+        }
+
+        /// <summary>
+        /// コマンド
+        /// </summary>
+        public Command Command
+        {
+            get { return (Command)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+        /// <summary>
+        /// コマンド
+        /// </summary>
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(Command), typeof(CCMButton));
+
+        /// <summary>
+        /// コマンドパラメータ
+        /// </summary>
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+        /// <summary>
+        /// コマンドパラメータ
+        /// </summary>
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(
+            "CommandParameter", typeof(object), typeof(CCMButton), null, BindingMode.TwoWay, propertyChanged: (b, o, n) =>
+            {
+                var button = b as CCMButton;
+                button.IsEnabled = button.Command.CanExecute(n);
+                button.CurrentTextColor = button.IsEnabled ? button.TextColor : Color.Gray;
+            });
     }
 }
